@@ -114,11 +114,16 @@ jobs:
           # Install
           cmake --install "${BUILD_DIR}" --config ${BUILD_TYPE}
 
-      - name: Memory Check (Valgrind)
+      - name: Memory Check (Valgrind on GCC)
         if: runner.os == 'Linux' && contains(matrix.cxx, 'g++')
         run: |
           valgrind --leak-check=full --error-exitcode=1 ./${BUILD_DIR}/${EXECUTABLE_NAME} < "${INPUT_FILENAME}"
 
+      - name: Memory Check (ASan on Clang)
+        if: runner.os == 'Linux' && contains(matrix.cxx, 'clang++')
+        run: |
+          # ASan is already compiled into the binary, just run it
+          ./${BUILD_DIR}/${EXECUTABLE_NAME} < "${INPUT_FILENAME}"
       - name: Static Analysis (Cppcheck)
         if: runner.os == 'Linux'
         run: |
