@@ -1,7 +1,7 @@
 #include "6articolDecorativ.h"
 
 // constructor cu parametri
-ArticolDecorativ::ArticolDecorativ(std::string& nume, double pretBaza, std::string& material, bool esteFragil) : Produs(nume, pretBaza), material(material), esteFragil(esteFragil) {}
+ArticolDecorativ::ArticolDecorativ(const std::string& nume, double pretBaza, const std::string& material, bool esteFragil) : Produs(nume, pretBaza), material(material), esteFragil(esteFragil) {}
 
 // destructor
 ArticolDecorativ::~ArticolDecorativ() {}
