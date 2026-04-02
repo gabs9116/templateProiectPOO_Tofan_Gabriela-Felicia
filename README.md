@@ -6,7 +6,7 @@ Din punct de vedere tehnic, am organizat codul sub forma unui arbore, unde aproa
 
 ![](arboreMostenire.png)
 
-### **1\. Entitate – Rădăcina proiectului**
+## **1\. Entitate – Rădăcina proiectului**
 
 Totul pleacă de la clasa Entitate. Este o clasă abstractă care servește drept „părinte” pentru aproape tot ce există în florărie. Am pus aici o variabilă statică contorId care se asigură că fiecare obiect nou creat primește un ID unic automat. Tot aici am definit și baza pentru afișarea polimorfică, prin supraîncărcarea operatorului \<\<.
 
@@ -48,4 +48,95 @@ Din această clasă se ramifică cele trei mari direcții ale aplicației: **Pro
 ### **16\. Main**
 
 În fișierul principal, am simulat introducerea unor date inițiale (manager, angajați, câteva flori în stoc) pentru ca aplicația să nu pornească goală, după care se lansează bucla meniului interactiv.
+
+### **Funcții regasite in program**
+
+În cadrul ierarhiei, clasele folosesc atât metode proprii, cât și metode preluate prin moștenire de la părinți.
+
+**Clasa Entitate**:
+
+* *getId()*: Returnează identificatorul unic al obiectului.  
+* *afisare(ostream& out)*: Funcție virtuală pură care obligă orice obiect să aibă o metodă de afișare.  
+* *operator\<\<*: Supraîncărcare pentru a permite afișarea polimorfică folosind std::cout.
+
+**Clasa Produs**:
+
+* *calculeazaPretFinal()*: Funcție virtuală pură pentru calcularea prețului după taxe sau reduceri.  
+* *aplicaIngrijire()*: Funcție virtuală pură pentru acțiuni specifice de întreținere.  
+* *getNume() / getPretBaza()*: Getteri pentru atributele principale.  
+* *setPretBaza()*: Permite modificarea prețului de către administrator.
+
+**Clasa Persoana**:
+
+* *getRol()*: Funcție virtuală pură care returnează tipul persoanei (Florist, Client etc.).  
+* *areTelefonValid()*: Verifică dacă numărul de telefon are exact 10 cifre.
+
+**Clasa Angajat**:
+
+* *calculeazaVenit()*: Calculează salariul net pornind de la cel brut.
+
+**Clasa Floare**:
+
+* *aplicaIngrijire()*: Crește gradul de prospețime al florii cu 10%.
+
+**Clasa FloareLaFir**:
+
+* *calculeazaPretFinal()*: Aplică reduceri dacă floarea este ofilită și înmulțește cu numărul de fire.
+
+**Clasa FloareGhiveci**:
+
+* *calculeazaPretFinal()*: Adaugă costul ghiveciului și o taxă extra pentru materialul de ceramică.
+
+**Clasa ArticolDecorativ**:
+
+* *calculeazaPretFinal()*: Adaugă o taxă de 10% dacă obiectul este marcat ca fragil.  
+* *aplicaIngrijire()*: Simulează ștergerea de praf și verificarea integrității.
+
+**Clasa Florist**:
+
+* *calculeazaVenit()*: Adaugă la salariu un bonus pentru fiecare buchet creat.
+
+**Clasa Vanzator**:
+
+* *calculeazaVenit()*: Adaugă la salariu un comision fix pentru fiecare vânzare efectuată.
+
+**Clasa Manager**:
+
+* *calculeazaVenit()*: Combină bonusurile de Florist și Vânzător cu un bonus special de conducere.
+
+**Clasa Client**:
+
+* *adaugaComanda(Comanda& c)*: Salvează o comandă nouă în istoricul clientului.
+
+**Clasa Comanda**:
+
+* *adaugaProdus(Produs\* p)*: Adaugă un pointer către un produs în lista curentă.  
+* *calculeazaTotal()*: Parcurge lista de produse și sumează prețurile lor finale.
+
+### **Functiile polimorfisme**
+
+Deasemenea, cum se poate observa si în lista lunga de functii de mai sus, am utilizat metode virtuale pentru a permite claselor „copil” să își personalizeze comportamentul (polimorfism), lucru esențial pentru funcții precum calculul prețului sau afișarea datelor.
+
+* **`afisare(ostream& out)`**: Aceasta este funcția polimorfică de bază. Fiind declarată virtuală pură în `Entitate`, ea obligă toate celelalte clase (Produs, Persoană, Angajat, Comandă etc.) să ofere propria implementare de afișare.
+
+* **`operator<<`**: Deși tehnic este o funcție `friend`, ea acționează polimorfic deoarece apelează metoda virtuală `afisare` a obiectului primit ca parametru.
+
+* **`calculeazaPretFinal()`**: Este o funcție virtuală pură în `Produs`. Ea se comportă polimorfic în:  
+  * *`FloareLaFir`*: aplică reduceri de ofilire și înmulțește cu numărul de fire.  
+  * *`FloareGhiveci`*: adaugă costul ghiveciului și taxele de material.  
+  * *`ArticolDecorativ`*: adaugă taxa de fragilitate.
+
+* **`aplicaIngrijire()`**: Declarată în `Produs`, această funcție permite tratarea diferită a produselor:  
+  * În *`Floare`*, ea crește gradul de prospețime.  
+  * În *`ArticolDecorativ`*, ea simulează ștergerea de praf.
+
+* **`getRol()`**: Este o funcție virtuală pură în `Persoana`. Ea permite sistemului să identifice polimorfic tipul persoanei fără a verifica manual tipul de date:  
+  * Returnează "Florist", "Vanzator", "Manager" sau "Client".
+
+* **`calculeazaVenit()`**: Declarată virtuală în clasa `Angajat`, această funcție permite calcularea automată a veniturilor totale:  
+  * *`Florist`*: adaugă bonusul per buchet.  
+  * *`Vanzator`*: adaugă comisionul per vânzare.  
+  * *`Manager`*: combină bonusurile din ambele ramuri ale moștenirii în diamant.
+
+
 
