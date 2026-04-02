@@ -166,11 +166,11 @@ void Meniu::modificaPret() {
         std::cout << "Introduceti ID-ul produsului pentru modificare: ";
         std::cin >> idCautat;
 
-        auto it = std::find_if(inventar.begin(), inventar.end(), [idCautat](Produs* p) {
+        auto id = std::find_if(inventar.begin(), inventar.end(), [idCautat](Produs* p) {
             return p->getId() == idCautat;
         });
         
-        if (it != inventar.end()) {
+        if (id != inventar.end()) {
                 double pretNou;
                 std::cout << "Produs gasit: " << (*id) -> getNume() << "\n";
                 std::cout << "Pret actual: " << (*id) -> getPretBaza() << " RON\n";
@@ -201,14 +201,14 @@ void Meniu::stergeProdus() {
 
     bool gasit = false;
 
-    auto it = std::find_if(inventar.begin(), inventar.end(), [idDeSters](Produs* p) {
+    auto id = std::find_if(inventar.begin(), inventar.end(), [idDeSters](Produs* p) {
         return p->getId() == idDeSters;
     });
 
-    if (it != inventar.end()) {
+    if (id != inventar.end()) {
         std::cout << "Produsul '" << (*id) -> getNume() << "' a fost sters.\n";
         delete *id;
-        inventar.erase(it);
+        inventar.erase(id);
         gasit = true;
     } else {
         std::cout << "Produsul nu exista.\n";
@@ -281,16 +281,16 @@ void Meniu::angajeazaPersoana() {
 
 // stergerea unui angajat existent dupa id
 void Meniu::concediazaAngajat() {
-    int id; 
+    int idConcediat; 
     std::cout << "ID Angajat de concediat: "; std::cin >> id;
 
-    auto it = std::find_if(oameni.begin(), oameni.end(), [id](Persoana* p) {
-        return p->getId() == id && dynamic_cast<Angajat*>(p);
+    auto id = std::find_if(oameni.begin(), oameni.end(), [idConcediat](Persoana* p) {
+        return p->getId() == idConcediat && dynamic_cast<Angajat*>(p);
     });
 
-    if (it != oameni.end()) {
-        delete *it;
-        oameni.erase(it);
+    if (id != oameni.end()) {
+        delete *id;
+        oameni.erase(id);
         std::cout << "Angajat concediat.\n";
     } else {
         std::cout << "Angajatul nu a fost gasit.\n";
@@ -321,16 +321,16 @@ void Meniu::adaugaClient() {
 
 // stergerea unui client existent dupa id
 void Meniu::stergeClient() {
-    int id; 
-    std::cout << "ID Client de sters: "; std::cin >> id;
+    int idSters; 
+    std::cout << "ID Client de sters: "; std::cin >> idSters;
 
-    auto it = std::find_if(oameni.begin(), oameni.end(), [id](Persoana* p) {
-        return p->getId() == id && dynamic_cast<Client*>(p);
+    auto id = std::find_if(oameni.begin(), oameni.end(), [idSters](Persoana* p) {
+        return p->getId() == idSters && dynamic_cast<Client*>(p);
     });
 
-    if (it != oameni.end()) {
-        delete *it;
-        oameni.erase(it);
+    if (id != oameni.end()) {
+        delete *id;
+        oameni.erase(id);
         std::cout << "Date client sterse.\n";
     } else {
         std::cout << "Clientul nu a fost gasit.\n";
