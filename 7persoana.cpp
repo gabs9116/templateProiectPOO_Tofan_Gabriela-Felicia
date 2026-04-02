@@ -18,4 +18,4 @@ void Persoana::afisare(std::ostream& out) const {
 // std::string Persoana::getTelefon() const { return telefon; }
 
 // validare
-bool Persoana::areTelefonValid() const { return telefon.length() == 10; }
+// bool Persoana::areTelefonValid() const { return telefon.length() == 10; }
