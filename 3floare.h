@@ -7,7 +7,7 @@ class Floare : public Produs {
         int gradStare; // procent: 0% -> ofilita, 100% -> proaspat udata
     public:
         // constructor cu parametri
-        Floare(std::string& nume, double pretBaza, int gradStare);
+        Floare(const std::string& nume, double pretBaza, int gradStare);
 
         // destructor virtual
         virtual ~Floare();
