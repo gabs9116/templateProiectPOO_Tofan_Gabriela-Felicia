@@ -1,7 +1,7 @@
 #include "5floareGhiveci.h"
 
 // constructor cu parametri
-FloareGhiveci::FloareGhiveci(std::string& nume, double pretBaza, int gradStare, std::string& materialGhiveci): Floare(nume, pretBaza, gradStare), materialGhiveci(materialGhiveci) {}
+FloareGhiveci::FloareGhiveci(const std::string& nume, double pretBaza, int gradStare, const std::string& materialGhiveci): Floare(nume, pretBaza, gradStare), materialGhiveci(materialGhiveci) {}
 
 // destructor
 FloareGhiveci::~FloareGhiveci() {}
