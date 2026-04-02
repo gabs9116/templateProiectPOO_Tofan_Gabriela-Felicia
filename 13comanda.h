@@ -26,5 +26,5 @@ class Comanda : public Entitate {
         void afisare(std::ostream& out) const override;
 
         // getter
-        double getTotalPlata() const;
+        // double getTotalPlata() const;
 };
