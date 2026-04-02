@@ -1,7 +1,7 @@
 #include "9florist.h"
 
 // constructor cu parametri
-Florist::Florist(std::string& nume, std::string& prenume, std::string& telefon, double salariuBaza, std::string& dataAngajarii, int nrBucheteCreate, double bonusPerBuchet) : Angajat(nume, prenume, telefon, salariuBaza, dataAngajarii), nrBucheteCreate(nrBucheteCreate), bonusPerBuchet(bonusPerBuchet) {}
+Florist::Florist(const std::string& nume, const std::string& prenume, const std::string& telefon, double salariuBaza, const std::string& dataAngajarii, int nrBucheteCreate, double bonusPerBuchet) : Angajat(nume, prenume, telefon, salariuBaza, dataAngajarii), nrBucheteCreate(nrBucheteCreate), bonusPerBuchet(bonusPerBuchet) {}
 
 // destructor
 Florist::~Florist() {}
