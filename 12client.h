@@ -8,7 +8,7 @@ class Client : public Persoana {
         std::vector<Comanda> comenzi;
     public:
         // constructor cu parametri
-        Client(std::string& nume, std::string& prenume, std::string& telefon);
+        Client(const std::string& nume, const std::string& prenume, const std::string& telefon);
 
         // destructor
         virtual ~Client();
