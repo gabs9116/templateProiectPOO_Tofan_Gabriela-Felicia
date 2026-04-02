@@ -21,5 +21,5 @@ class Angajat : public Persoana {
         void afisare(std::ostream& out) const override;
 
         // getter (salariu brut)
-        double getSalariuBaza() const;
+        // double getSalariuBaza() const;
 };
