@@ -19,6 +19,8 @@ void Comanda::adaugaProdus(Produs* p) {
 // calcul pret total
 double Comanda::calculeazaTotal() {
     double suma = 0;
+
+    // cppcheck-suppress useStlAlgorithm
     for (const Produs* p : produseComandate) {
         suma += p -> calculeazaPretFinal();
     }
