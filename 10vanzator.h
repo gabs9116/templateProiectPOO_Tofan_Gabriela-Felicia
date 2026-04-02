@@ -9,7 +9,7 @@ class Vanzator : virtual public Angajat {
 
     public:
         // Constructor cu parametri
-        Vanzator(std::string nume, std::string prenume, std::string telefon, double salariuBaza, std::string dataAngajarii, int nrVanzari, double comision);
+        Vanzator(std::string& nume, std::string& prenume, std::string& telefon, double salariuBaza, std::string& dataAngajarii, int nrVanzari, double comision);
 
         // destructor
         virtual ~Vanzator();
