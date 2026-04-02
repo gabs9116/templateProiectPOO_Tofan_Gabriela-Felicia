@@ -8,7 +8,7 @@ class Florist : virtual public Angajat {
         double bonusPerBuchet;
     public:
         // constructor cu parametri
-        Florist(std::string& nume, std::string& prenume, std::string& telefon, double salariuBaza, std::string& dataAngajarii, int nrBucheteCreate, double bonusPerBuchet);
+        Florist(const std::string& nume, const std::string& prenume, const std::string& telefon, double salariuBaza, const std::string& dataAngajarii, int nrBucheteCreate, double bonusPerBuchet);
 
         // destructor virtual
         virtual ~Florist();
