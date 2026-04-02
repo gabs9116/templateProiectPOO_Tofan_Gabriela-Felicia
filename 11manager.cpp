@@ -2,12 +2,12 @@
 
 // constructor cu parametri
 Manager::Manager(std::string nume, std::string prenume, std::string telefon, double salariuBaza, std::string dataAngajarii, 
-            int nrBuchete, double bonusPerBuchet,
             int nrVanzari, double Comision, 
+            int nrBuchete, double bonusPerBuchet,
             double bonusConducere) : 
         Angajat(nume, prenume, telefon, salariuBaza, dataAngajarii),
-        Florist(nume, prenume, telefon, salariuBaza, dataAngajarii, nrBuchete, bonusPerBuchet),
         Vanzator(nume, prenume, telefon, salariuBaza, dataAngajarii, nrVanzari, Comision),
+        Florist(nume, prenume, telefon, salariuBaza, dataAngajarii, nrBuchete, bonusPerBuchet),
         bonusConducere(bonusConducere) {}
 
 // destructor
