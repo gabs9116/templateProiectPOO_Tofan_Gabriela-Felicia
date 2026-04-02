@@ -19,5 +19,5 @@ class Floare : public Produs {
         void aplicaIngrijire() override;
 
         //getter
-        int getGradStare() const;
+        // int getGradStare() const;
 };
