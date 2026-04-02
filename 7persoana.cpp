@@ -1,7 +1,7 @@
 #include "7persoana.h"
 
 // constructor cu parametri
-Persoana::Persoana(std::string nume, std::string prenume, std::string telefon) : Entitate(), nume(nume), prenume(prenume), telefon(telefon) {}
+Persoana::Persoana(std::string& nume, std::string& prenume, std::string& telefon) : Entitate(), nume(nume), prenume(prenume), telefon(telefon) {}
 
 // destructor virtual
 Persoana::~Persoana() {}
