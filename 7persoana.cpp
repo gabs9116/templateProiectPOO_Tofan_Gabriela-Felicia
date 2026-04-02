@@ -12,10 +12,10 @@ void Persoana::afisare(std::ostream& out) const {
 }
 
 // getteri
-std::string Persoana::getNumeComplet() const { return nume + " " + prenume;}
-std::string Persoana::getNume() const { return nume; }
-std::string Persoana::getPrenume() const { return prenume; }
-std::string Persoana::getTelefon() const { return telefon; }
+// std::string Persoana::getNumeComplet() const { return nume + " " + prenume;}
+// std::string Persoana::getNume() const { return nume; }
+// std::string Persoana::getPrenume() const { return prenume; }
+// std::string Persoana::getTelefon() const { return telefon; }
 
 // validare
 bool Persoana::areTelefonValid() const { return telefon.length() == 10; }
