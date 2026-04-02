@@ -30,7 +30,7 @@ void Comanda::afisare(std::ostream& out) const {
     out << "------------------------------------\n";
     out << "Comanda nr: " << id << " | Data: " << dataComanda << "\n";
 
-    for (Produs* p : produseComandate) {
+    for (const Produs* p : produseComandate) {
         p->afisare(out);
     }
 
