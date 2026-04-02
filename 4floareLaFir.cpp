@@ -26,11 +26,11 @@ void FloareLaFir::afisare(std::ostream& out) const {
 }
 
 // getter
-int FloareLaFir::getNrFire() const { 
-    return nrFire; 
-}
+// int FloareLaFir::getNrFire() const { 
+//     return nrFire; 
+// }
 
 // setter
-void FloareLaFir::setNrFire(int valoare) { 
-    nrFire = valoare; 
-}
+// void FloareLaFir::setNrFire(int valoare) { 
+//     nrFire = valoare; 
+// }
