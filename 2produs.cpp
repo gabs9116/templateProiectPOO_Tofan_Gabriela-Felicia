@@ -1,7 +1,7 @@
 #include "2produs.h"
 
 // constructor cu parametri
-Produs::Produs(const std::string nume, double pretBaza) : Entitate(), nume(nume), pretBaza(pretBaza) {}
+Produs::Produs(const std::string& nume, double pretBaza) : Entitate(), nume(nume), pretBaza(pretBaza) {}
 
 // destructor virtual
 Produs::~Produs() {} 
