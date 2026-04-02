@@ -8,8 +8,8 @@ class Manager : public Vanzator, public Florist {
     public:
         // constructor cu parametri
         Manager(std::string nume, std::string prenume, std::string telefon, double salariuBaza, std::string dataAngajarii, 
+            int nrVanzari, double Comision,
             int nrBuchete, double bonusPerBuchet,
-            int nrVanzari, double Comision, 
             double bonusConducere);
         
         // destructor
