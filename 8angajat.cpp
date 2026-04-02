@@ -18,6 +18,6 @@ void Angajat::afisare(std::ostream& out) const {
 }
 
 // getter
-double Angajat::getSalariuBaza() const {
-    return salariuBaza;
-}
+// double Angajat::getSalariuBaza() const {
+//     return salariuBaza;
+// }
