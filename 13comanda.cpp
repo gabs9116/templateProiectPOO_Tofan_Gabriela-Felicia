@@ -1,4 +1,6 @@
 #include "13comanda.h"
+#include <numeric>
+#include <algorithm>
 
 // constructor cu parametri
 Comanda::Comanda(const std::string& dataComanda) : Entitate(), dataComanda(dataComanda), totalPlata(0.0) {}
@@ -16,15 +18,11 @@ void Comanda::adaugaProdus(Produs* p) {
     }
 }
 
-// calcul pret total
+// calcul pret total (folosesc std::accumulate deoarece ubuntu nu accepta for urile)
 double Comanda::calculeazaTotal() {
-    double suma = 0;
-
-    // cppcheck-suppress useStlAlgorithm
-    for (const Produs* p : produseComandate) {
-        suma += p -> calculeazaPretFinal();
-    }
-    return suma;
+    return std::accumulate(produseComandate.begin(), produseComandate.end(), 0.0, [](double sumaCurenta, const Produs* p) {
+            return sumaCurenta + p->calculeazaPretFinal();
+        });
 }
 
 // redefinirea afisarii
@@ -32,9 +30,9 @@ void Comanda::afisare(std::ostream& out) const {
     out << "------------------------------------\n";
     out << "Comanda nr: " << id << " | Data: " << dataComanda << "\n";
 
-    for (const Produs* p : produseComandate) {
+    std::for_each(produseComandate.begin(), produseComandate.end(), [&out](const Produs* p) {
         p->afisare(out);
-    }
+    });
 
     out << "Total de plata: " << totalPlata << " RON\n";
     out << "------------------------------------\n";
