@@ -166,7 +166,7 @@ void Meniu::modificaPret() {
         std::cout << "Introduceti ID-ul produsului pentru modificare: ";
         std::cin >> idCautat;
 
-        auto id = std::find_if(inventar.begin(), inventar.end(), [idCautat](Produs* p) {
+        auto id = std::find_if(inventar.begin(), inventar.end(), [idCautat](const Produs* p) {
             return p->getId() == idCautat;
         });
         
@@ -201,7 +201,7 @@ void Meniu::stergeProdus() {
 
     bool gasit = false;
 
-    auto id = std::find_if(inventar.begin(), inventar.end(), [idDeSters](Produs* p) {
+    auto id = std::find_if(inventar.begin(), inventar.end(), [idDeSters](const Produs* p) {
         return p->getId() == idDeSters;
     });
 
@@ -284,7 +284,7 @@ void Meniu::concediazaAngajat() {
     int idConcediat; 
     std::cout << "ID : "; std::cin >> idConcediat;
 
-    auto id = std::find_if(oameni.begin(), oameni.end(), [idConcediat](Persoana* p) {
+    auto id = std::find_if(oameni.begin(), oameni.end(), [idConcediat](const Persoana* p) {
         return p->getId() == idConcediat && dynamic_cast<Angajat*>(p);
     });
 
@@ -324,7 +324,7 @@ void Meniu::stergeClient() {
     int idSters; 
     std::cout << "ID Client de sters: "; std::cin >> idSters;
 
-    auto id = std::find_if(oameni.begin(), oameni.end(), [idSters](Persoana* p) {
+    auto id = std::find_if(oameni.begin(), oameni.end(), [idSters](const Persoana* p) {
         return p->getId() == idSters && dynamic_cast<Client*>(p);
     });
 
