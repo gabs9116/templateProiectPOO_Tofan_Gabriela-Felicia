@@ -10,7 +10,7 @@ class Persoana : public Entitate {
         std::string telefon; // un sir de 10 cifre
     public:
         // constructor cu parametri
-        Persoana(std::string& nume, std::string& prenume, std::string& telefon);
+        Persoana(const std::string& nume, const std::string& prenume, const std::string& telefon);
 
         // destructor virtual
         virtual ~Persoana();
