@@ -38,7 +38,7 @@ void introducereDateInitiale(Meniu* aplicatie) {
         c1->adaugaComanda(com1);
 
 
-        // --- 3. STOC (Produse) ---
+        // PRODUSE
         // Flori la fir
         aplicatie->adaugaProdusExtern(new FloareLaFir("Trandafir", 15.0, 90, "Rosu", 50));
         aplicatie->adaugaProdusExtern(new FloareLaFir("Crini", 25.0, 85, "Alb", 20));
