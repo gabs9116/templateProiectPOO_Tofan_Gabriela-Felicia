@@ -9,6 +9,7 @@
 #include "12client.h"
 #include "13comanda.h"
 #include <iostream>
+#include <algorithm>
 
 // Initializarea pointerului static
 Meniu* Meniu::instanta = nullptr;
@@ -165,13 +166,14 @@ void Meniu::modificaPret() {
         std::cout << "Introduceti ID-ul produsului pentru modificare: ";
         std::cin >> idCautat;
 
-        bool gasit = false;
-        for (Produs* p : inventar) {
-            if (p -> getId() == idCautat) {
-                gasit = true;
+        auto it = std::find_if(inventar.begin(), inventar.end(), [idCautat](Produs* p) {
+            return p->getId() == idCautat;
+        });
+        
+        if (it != inventar.end()) {
                 double pretNou;
-                std::cout << "Produs gasit: " << p -> getNume() << "\n";
-                std::cout << "Pret actual: " << p -> getPretBaza() << " RON\n";
+                std::cout << "Produs gasit: " << *id -> getNume() << "\n";
+                std::cout << "Pret actual: " << *id -> getPretBaza() << " RON\n";
                 std::cout << "Introduceti noul pret: ";
                 std::cin >> pretNou;
 
@@ -180,15 +182,13 @@ void Meniu::modificaPret() {
                 }
 
                 p->setPretBaza(pretNou);
+
+                (*it) -> setPretBaza(pretNou);
                 
                 std::cout << "Pretul a fost actualizat cu succes!\n";
                 break;
-            }
-        }
-
-        if (!gasit) {
-            std::cout << "Produsul cu ID-ul " << idCautat << " nu a fost gasit.\n";
-        }
+            } else
+                std::cout << "Produsul nu a fost gasit.\n";
     } catch (const std::exception& e) {
         std::cout << e.what() << "\n";
     }
@@ -200,17 +200,19 @@ void Meniu::stergeProdus() {
     std::cout << "Introduceti ID-ul produsului de sters: ";
     std::cin >> idDeSters;
 
-    bool gasit = false;
+    bool gasit = false
 
-    // cppcheck-suppress useStlAlgorithm
-    for (auto it = inventar.begin(); it != inventar.end(); ++it) {
-        if ((*it) -> getId() == idDeSters) {
-            std::cout << "Produsul '" << (*it) -> getNume() << "' a fost sters.\n";
-            delete *it;
-            inventar.erase(it); 
-            gasit = true;
-            break;
-        }
+    auto it = std::find_if(inventar.begin(), inventar.end(), [idDeSters](Produs* p) {
+        return p->getId() == idDeSters;
+    });
+
+    if (it != inventar.end()) {
+        std::cout << "Produsul '" << (*it) -> getNume() << "' a fost sters.\n";
+        delete *it;
+        inventar.erase(it);
+        gasit = true
+    } else {
+        std::cout << "Produsul nu exista.\n";
     }
 
     if (!gasit) {
@@ -227,12 +229,12 @@ void Meniu::cautaDupaNume() const {
     bool gasit = false;
     std::cout << "Rezultatele cautarii pentru '" << numeCautat << "':\n";
     
-    for (const Produs* p : inventar) {
-        if (p -> getNume() == numeCautat) {
-            p -> afisare(std::cout); 
+    std::for_each(inventar.begin(), inventar.end(), [&numeCautat, &gasit](const Produs* p) {
+        if (p->getNume() == numeCautat) {
+            p->afisare(std::cout);
             gasit = true;
         }
-    }
+    });
 
     if (!gasit) {
         std::cout << "Nu s-a gasit niciun produs care sa contina numele '" << numeCautat << "'.\n";
@@ -242,7 +244,7 @@ void Meniu::cautaDupaNume() const {
 // ingrijirea generala a florilor
 void Meniu::ingrijireGenerala() {
     std::cout << "Se aplica ingrijire florilor din stoc...\n";
-    for (Produs* p : inventar) {
+    std::for_each(inventar.begin(), inventar.end(), [](Produs* p) {
         // folosim dynamic_cast pentru a identifica doar obiectele de tip Floare
         Floare* f = dynamic_cast<Floare*>(p);
 
@@ -283,17 +285,17 @@ void Meniu::concediazaAngajat() {
     int id; 
     std::cout << "ID Angajat de concediat: "; std::cin >> id;
 
-    // cppcheck-suppress useStlAlgorithm
-    for (auto it = oameni.begin(); it != oameni.end(); ++it) {
-        if ((*it) -> getId() == id && dynamic_cast<Angajat*>(*it)) {
-            delete *it; 
-            oameni.erase(it);
+    auto it = std::find_if(oameni.begin(), oameni.end(), [id](Persoana* p) {
+        return p->getId() == id && dynamic_cast<Angajat*>(p);
+    });
 
-            std::cout << "Angajat concediat.\n"; 
-            return;
-        }
+    if (it != oameni.end()) {
+        delete *it;
+        oameni.erase(it);
+        std::cout << "Angajat concediat.\n";
+    } else {
+        std::cout << "Angajatul nu a fost gasit.\n";
     }
-    std::cout << "Angajatul nu a fost gasit.\n";
 }
 
 // functie pentru afisarea tuturor angajatilor
@@ -323,15 +325,16 @@ void Meniu::stergeClient() {
     int id; 
     std::cout << "ID Client de sters: "; std::cin >> id;
 
-    // cppcheck-suppress useStlAlgorithm
-    for (auto it = oameni.begin(); it != oameni.end(); ++it) {
-        if ((*it) -> getId() == id && dynamic_cast<Client*>(*it)) {
-            delete *it; 
-            oameni.erase(it);
+    auto it = std::find_if(oameni.begin(), oameni.end(), [id](Persoana* p) {
+        return p->getId() == id && dynamic_cast<Client*>(p);
+    });
 
-            std::cout << "Client sters.\n"; 
-            return;
-        }
+    if (it != oameni.end()) {
+        delete *it;
+        oameni.erase(it);
+        std::cout << "Date client sterse.\n";
+    } else {
+        std::cout << "Clientul nu a fost gasit.\n";
     }
 }
 
