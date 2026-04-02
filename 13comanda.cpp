@@ -39,6 +39,6 @@ void Comanda::afisare(std::ostream& out) const {
 }
 
 // getter
-double Comanda::getTotalPlata() const {
-    return totalPlata;
-}
+// double Comanda::getTotalPlata() const {
+//     return totalPlata;
+// }
