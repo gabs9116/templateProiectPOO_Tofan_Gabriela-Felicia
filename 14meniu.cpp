@@ -172,8 +172,8 @@ void Meniu::modificaPret() {
         
         if (it != inventar.end()) {
                 double pretNou;
-                std::cout << "Produs gasit: " << *id -> getNume() << "\n";
-                std::cout << "Pret actual: " << *id -> getPretBaza() << " RON\n";
+                std::cout << "Produs gasit: " << (*id) -> getNume() << "\n";
+                std::cout << "Pret actual: " << (*id) -> getPretBaza() << " RON\n";
                 std::cout << "Introduceti noul pret: ";
                 std::cin >> pretNou;
 
@@ -181,12 +181,11 @@ void Meniu::modificaPret() {
                     throw ExceptieValidareDate("Noul pret trebuie sa fie pozitiv!");
                 }
 
-                p->setPretBaza(pretNou);
+                (*id) -> setPretBaza(pretNou);
 
                 (*it) -> setPretBaza(pretNou);
                 
                 std::cout << "Pretul a fost actualizat cu succes!\n";
-                break;
             } else
                 std::cout << "Produsul nu a fost gasit.\n";
     } catch (const std::exception& e) {
@@ -200,7 +199,7 @@ void Meniu::stergeProdus() {
     std::cout << "Introduceti ID-ul produsului de sters: ";
     std::cin >> idDeSters;
 
-    bool gasit = false
+    bool gasit = false;
 
     auto it = std::find_if(inventar.begin(), inventar.end(), [idDeSters](Produs* p) {
         return p->getId() == idDeSters;
@@ -210,7 +209,7 @@ void Meniu::stergeProdus() {
         std::cout << "Produsul '" << (*it) -> getNume() << "' a fost sters.\n";
         delete *it;
         inventar.erase(it);
-        gasit = true
+        gasit = true;
     } else {
         std::cout << "Produsul nu exista.\n";
     }
@@ -251,7 +250,7 @@ void Meniu::ingrijireGenerala() {
         if (f != nullptr) {
             f -> aplicaIngrijire();
         }
-    }
+    });
 }
 
 // === FUNCTII ANGAJATI ===
