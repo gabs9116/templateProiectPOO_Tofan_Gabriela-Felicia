@@ -1,7 +1,7 @@
 #include "11manager.h"
 
 // constructor cu parametri
-Manager::Manager(std::string nume, std::string prenume, std::string telefon, double salariuBaza, std::string dataAngajarii, 
+Manager::Manager(std::string& nume, std::string& prenume, std::string& telefon, double salariuBaza, std::string& dataAngajarii, 
             int nrVanzari, double Comision, 
             int nrBuchete, double bonusPerBuchet,
             double bonusConducere) : 
