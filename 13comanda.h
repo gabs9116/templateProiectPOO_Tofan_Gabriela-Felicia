@@ -11,7 +11,7 @@ class Comanda : public Entitate {
         double totalPlata;
     public:
         // constructorul cu parametri
-        Comanda(std::string dataComanda);
+        Comanda(std::string& dataComanda);
 
         // destructor
         virtual ~Comanda();
