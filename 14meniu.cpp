@@ -347,7 +347,7 @@ void Meniu::adaugaComandaClient() {
     });
 
     if (id != oameni.end()) {
-        Client* c = dynamic_cast<Client*>(*it);
+        Client* c = dynamic_cast<Client*>(*id);
         if (c) {
             std::string data; 
             std::cout << "Data comanda (dd.mm.yyyy): "; std::cin >> data;
