@@ -183,7 +183,7 @@ void Meniu::modificaPret() {
 
                 (*id) -> setPretBaza(pretNou);
 
-                (*it) -> setPretBaza(pretNou);
+                (*id) -> setPretBaza(pretNou);
                 
                 std::cout << "Pretul a fost actualizat cu succes!\n";
             } else
@@ -206,8 +206,8 @@ void Meniu::stergeProdus() {
     });
 
     if (it != inventar.end()) {
-        std::cout << "Produsul '" << (*it) -> getNume() << "' a fost sters.\n";
-        delete *it;
+        std::cout << "Produsul '" << (*id) -> getNume() << "' a fost sters.\n";
+        delete *id;
         inventar.erase(it);
         gasit = true;
     } else {
