@@ -1,7 +1,7 @@
 #include "4floareLaFir.h"
 
 // constructor cu parametri
-FloareLaFir::FloareLaFir(std::string& nume, double pretBaza, int gradStare, std::string culoare, int nrFire): Floare(nume, pretBaza, gradStare), culoare(culoare), nrFire(nrFire) {}
+FloareLaFir::FloareLaFir(const std::string& nume, double pretBaza, int gradStare, const std::string culoare, int nrFire): Floare(nume, pretBaza, gradStare), culoare(culoare), nrFire(nrFire) {}
 
 // destructor virtual
 FloareLaFir::~FloareLaFir() {} 
