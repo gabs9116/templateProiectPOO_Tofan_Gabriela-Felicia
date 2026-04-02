@@ -22,10 +22,10 @@ class Persoana : public Entitate {
         virtual std::string getRol() const = 0;
 
         // getteri
-        std::string getNumeComplet() const;
-        std::string getNume() const;
-        std::string getPrenume() const;
-        std::string getTelefon() const;
+        // std::string getNumeComplet() const;
+        // std::string getNume() const;
+        // std::string getPrenume() const;
+        // std::string getTelefon() const;
 
         // validare
         bool areTelefonValid() const;
