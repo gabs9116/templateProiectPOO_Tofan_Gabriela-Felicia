@@ -1,7 +1,7 @@
 #include "3floare.h"
 
 // constructor cu parametri
-Floare::Floare(std::string nume, double pretBaza, int gradStare) : Produs(nume, pretBaza), gradStare(gradStare) {
+Floare::Floare(std::string& nume, double pretBaza, int gradStare) : Produs(nume, pretBaza), gradStare(gradStare) {
     // verific ca nu se depasesc limitele
     if(this -> gradStare > 100)
         this -> gradStare = 100;
