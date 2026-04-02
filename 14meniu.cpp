@@ -285,7 +285,7 @@ void Meniu::concediazaAngajat() {
     std::cout << "ID : "; std::cin >> idConcediat;
 
     auto id = std::find_if(oameni.begin(), oameni.end(), [idConcediat](const Persoana* p) {
-        return p->getId() == idConcediat && dynamic_cast<Angajat*>(p);
+        return p->getId() == idConcediat && dynamic_cast<const Angajat*>(p);
     });
 
     if (id != oameni.end()) {
@@ -325,7 +325,7 @@ void Meniu::stergeClient() {
     std::cout << "ID Client de sters: "; std::cin >> idSters;
 
     auto id = std::find_if(oameni.begin(), oameni.end(), [idSters](const Persoana* p) {
-        return p->getId() == idSters && dynamic_cast<Client*>(p);
+        return p->getId() == idSters && dynamic_cast<const Client*>(p);
     });
 
     if (id != oameni.end()) {
@@ -342,7 +342,11 @@ void Meniu::adaugaComandaClient() {
     int idClient; 
     std::cout << "ID Client: "; std::cin >> idClient;
 
-    for (auto p : oameni) {
+    auto it = std::find_if(oameni.begin(), oameni.end(), [idClient](const Persoana* p) {
+        return (p->getId() == idClient && dynamic_cast<const Client*>(p) != nullptr);
+    });
+
+    if (it != oameni.end()) {
         Client* c = dynamic_cast<Client*>(p);
         if (c && c -> getId() == idClient) {
             std::string data; 
@@ -359,7 +363,9 @@ void Meniu::adaugaComandaClient() {
             }
             c->adaugaComanda(noua);
             std::cout << "Comanda adaugata!\n"; return;
-        }
+        } else {
+        std::cout << "Client negasit.\n";
+    }
     }
 }
 
