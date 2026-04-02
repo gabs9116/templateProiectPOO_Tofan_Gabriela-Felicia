@@ -1,7 +1,7 @@
 #include "12client.h"
 
 // constructor cu parametri
-Client::Client(std::string nume, std::string prenume, std::string telefon) 
+Client::Client(std::string& nume, std::string& prenume, std::string& telefon) 
     : Persoana(nume, prenume, telefon) {}
 
 // destructor
