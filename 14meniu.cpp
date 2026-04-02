@@ -202,6 +202,7 @@ void Meniu::stergeProdus() {
 
     bool gasit = false;
 
+    // cppcheck-suppress useStlAlgorithm
     for (auto it = inventar.begin(); it != inventar.end(); ++it) {
         if ((*it) -> getId() == idDeSters) {
             std::cout << "Produsul '" << (*it) -> getNume() << "' a fost sters.\n";
@@ -282,6 +283,7 @@ void Meniu::concediazaAngajat() {
     int id; 
     std::cout << "ID Angajat de concediat: "; std::cin >> id;
 
+    // cppcheck-suppress useStlAlgorithm
     for (auto it = oameni.begin(); it != oameni.end(); ++it) {
         if ((*it) -> getId() == id && dynamic_cast<Angajat*>(*it)) {
             delete *it; 
@@ -321,6 +323,7 @@ void Meniu::stergeClient() {
     int id; 
     std::cout << "ID Client de sters: "; std::cin >> id;
 
+    // cppcheck-suppress useStlAlgorithm
     for (auto it = oameni.begin(); it != oameni.end(); ++it) {
         if ((*it) -> getId() == id && dynamic_cast<Client*>(*it)) {
             delete *it; 
