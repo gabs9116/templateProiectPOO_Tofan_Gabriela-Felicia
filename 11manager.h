@@ -7,7 +7,7 @@ class Manager : public Vanzator, public Florist {
         double bonusConducere;
     public:
         // constructor cu parametri
-        Manager(std::string nume, std::string prenume, std::string telefon, double salariuBaza, std::string dataAngajarii, 
+        Manager(std::string& nume, std::string& prenume, std::string& telefon, double salariuBaza, std::string& dataAngajarii, 
             int nrVanzari, double Comision,
             int nrBuchete, double bonusPerBuchet,
             double bonusConducere);
