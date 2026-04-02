@@ -21,8 +21,8 @@ class FloareLaFir : public Floare {
         double calculeazaPretFinal() const override;
     
         // getter
-        int getNrFire() const;
+        // int getNrFire() const;
 
         // setter
-        void setNrFire(int valoare);
+        // void setNrFire(int valoare);
 };
