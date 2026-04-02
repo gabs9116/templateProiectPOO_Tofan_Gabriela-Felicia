@@ -342,11 +342,11 @@ void Meniu::adaugaComandaClient() {
     int idClient; 
     std::cout << "ID Client: "; std::cin >> idClient;
 
-    auto it = std::find_if(oameni.begin(), oameni.end(), [idClient](const Persoana* p) {
+    auto id = std::find_if(oameni.begin(), oameni.end(), [idClient](const Persoana* p) {
         return (p->getId() == idClient && dynamic_cast<const Client*>(p) != nullptr);
     });
 
-    if (it != oameni.end()) {
+    if (id != oameni.end()) {
         Client* c = dynamic_cast<Client*>(p);
         if (c && c -> getId() == idClient) {
             std::string data; 
