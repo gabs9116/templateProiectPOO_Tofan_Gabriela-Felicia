@@ -28,5 +28,5 @@ class Persoana : public Entitate {
         // std::string getTelefon() const;
 
         // validare
-        bool areTelefonValid() const;
+        // bool areTelefonValid() const;
 };
