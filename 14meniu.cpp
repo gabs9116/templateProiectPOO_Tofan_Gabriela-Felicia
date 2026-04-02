@@ -226,7 +226,7 @@ void Meniu::cautaDupaNume() const {
     bool gasit = false;
     std::cout << "Rezultatele cautarii pentru '" << numeCautat << "':\n";
     
-    for (Produs* p : inventar) {
+    for (const Produs* p : inventar) {
         if (p -> getNume() == numeCautat) {
             p -> afisare(std::cout); 
             gasit = true;
