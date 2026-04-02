@@ -9,7 +9,7 @@ class Angajat : public Persoana {
         std::string dataAngajarii;
     public:
         // construcor cu paramentri
-        Angajat(std::string nume, std::string prenume, std::string telefon, double salariuBaza, std::string dataAngajarii);
+        Angajat(std::string& nume, std::string& prenume, std::string& telefon, double salariuBaza, std::string& dataAngajarii);
 
         // destructor virtual
         virtual ~Angajat();
