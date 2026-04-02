@@ -1,7 +1,7 @@
 #include "8angajat.h"
 
 // constructor cu parametri
-Angajat::Angajat(std::string& nume, std::string& prenume, std::string& telefon, double salariuBaza, std::string& dataAngajarii) : Persoana(nume, prenume, telefon), salariuBaza(salariuBaza), dataAngajarii(dataAngajarii) {}
+Angajat::Angajat(const std::string& nume, const std::string& prenume, const std::string& telefon, double salariuBaza, const std::string& dataAngajarii) : Persoana(nume, prenume, telefon), salariuBaza(salariuBaza), dataAngajarii(dataAngajarii) {}
 
 // destructor
 Angajat::~Angajat() {}
