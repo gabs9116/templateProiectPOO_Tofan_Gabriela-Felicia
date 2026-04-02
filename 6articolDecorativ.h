@@ -10,7 +10,7 @@ private:
 
 public:
     // constructor cu parametri
-    ArticolDecorativ(std::string& nume, double pretBaza, std::string& material, bool esteFragil);
+    ArticolDecorativ(const std::string& nume, double pretBaza, const std::string& material, bool esteFragil);
 
     // destructor
     virtual ~ArticolDecorativ();
