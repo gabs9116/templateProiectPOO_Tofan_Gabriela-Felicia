@@ -282,7 +282,7 @@ void Meniu::angajeazaPersoana() {
 // stergerea unui angajat existent dupa id
 void Meniu::concediazaAngajat() {
     int idConcediat; 
-    std::cout << "ID Angajat de concediat: "; std::cin >> id;
+    std::cout << "ID : "; std::cin >> idConcediat;
 
     auto id = std::find_if(oameni.begin(), oameni.end(), [idConcediat](Persoana* p) {
         return p->getId() == idConcediat && dynamic_cast<Angajat*>(p);
