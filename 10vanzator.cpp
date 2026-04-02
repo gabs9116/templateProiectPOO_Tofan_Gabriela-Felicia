@@ -1,8 +1,8 @@
 #include "10vanzator.h"
 
 // Constructor cu parametri
-Vanzator::Vanzator(std::string& nume, std::string& prenume, std::string& telefon, 
-                   double salariuBaza, std::string& dataAngajarii, 
+Vanzator::Vanzator(const std::string& nume, const std::string& prenume, const std::string& telefon, 
+                   double salariuBaza, const std::string& dataAngajarii, 
                    int nrVanzari, double comision)
     : Angajat(nume, prenume, telefon, salariuBaza, dataAngajarii), 
       nrVanzariEfectuate(nrVanzari), comisionPerVanzare(comision) {}
