@@ -19,7 +19,7 @@ void Comanda::adaugaProdus(Produs* p) {
 // calcul pret total
 double Comanda::calculeazaTotal() {
     double suma = 0;
-    for (Produs* p : produseComandate) {
+    for (const Produs* p : produseComandate) {
         suma += p -> calculeazaPretFinal();
     }
     return suma;
