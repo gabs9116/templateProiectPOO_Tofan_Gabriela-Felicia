@@ -1,7 +1,7 @@
 #include "13comanda.h"
 
 // constructor cu parametri
-Comanda::Comanda(std::string dataComanda) : Entitate(), dataComanda(dataComanda), totalPlata(0.0) {}
+Comanda::Comanda(const std::string& dataComanda) : Entitate(), dataComanda(dataComanda), totalPlata(0.0) {}
 
 // destructor
 Comanda::~Comanda() {
