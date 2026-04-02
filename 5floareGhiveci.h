@@ -9,7 +9,7 @@ private:
 
 public:
     // constructor cu parametri
-    FloareGhiveci(std::string nume, double pretBaza, int gradStare, std::string materialGhiveci);
+    FloareGhiveci(std::string& nume, double pretBaza, int gradStare, std::string& materialGhiveci);
 
     // destructor
     virtual ~FloareGhiveci();
