@@ -9,7 +9,7 @@ class FloareLaFir : public Floare {
         int nrFire;
     public:
         // constructor cu parametri
-        FloareLaFir(std::string nume, double pretBaza, int gradStare, std::string culoare, int nrFire);
+        FloareLaFir(std::string& nume, double pretBaza, int gradStare, std::string culoare, int nrFire);
 
         // destructor virtual
         virtual ~FloareLaFir();
