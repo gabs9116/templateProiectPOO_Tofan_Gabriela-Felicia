@@ -26,6 +26,6 @@ void Floare::aplicaIngrijire() {
 }
 
 // getter
-int Floare::getGradStare() const {
-    return gradStare;
-}
+// int Floare::getGradStare() const {
+//     return gradStare;
+// }
