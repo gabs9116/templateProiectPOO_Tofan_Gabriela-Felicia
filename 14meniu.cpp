@@ -166,7 +166,7 @@ void Meniu::modificaPret() {
         std::cin >> idCautat;
 
         bool gasit = false;
-        for (Produs* p : inventar) {
+        for (const Produs* p : inventar) {
             if (p -> getId() == idCautat) {
                 gasit = true;
                 double pretNou;
