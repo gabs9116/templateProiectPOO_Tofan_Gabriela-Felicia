@@ -9,7 +9,7 @@ class Produs : public Entitate {
         double pretBaza; // pretul produsului
     public:
         // constructor cu parametri
-        Produs(std::string nume, double pretBaza); 
+        Produs(const std::string nume, double pretBaza); 
 
         // destructor virtual
         virtual ~Produs(); 
