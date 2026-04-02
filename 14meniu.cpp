@@ -297,9 +297,10 @@ void Meniu::concediazaAngajat() {
 // functie pentru afisarea tuturor angajatilor
 void Meniu::afiseazaAngajati() const {
     for (auto p : oameni) {
-        if (dynamic_cast<Angajat*>(p)) 
+        if (dynamic_cast<Angajat*>(p)) {
             p -> afisare(std::cout);
             std::cout << "\n";
+        }
     }
 }
 
