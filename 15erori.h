@@ -5,13 +5,13 @@
 // clasa de baza
 class ExceptieFlorarie : public std::runtime_error {
     public:
-        ExceptieFlorarie(const std::string& mesaj) : std::runtime_error(mesaj) {}
+        explicit ExceptieFlorarie(const std::string& mesaj) : std::runtime_error(mesaj) {}
 };
 
 // exceptie pt validarea preturilor sau firelor
 class ExceptieValidareDate : public std::logic_error {
     public:
-        ExceptieValidareDate(const std::string& mesaj) : std::logic_error("Eroare Validare: " + mesaj) {}
+        explicit ExceptieValidareDate(const std::string& mesaj) : std::logic_error("Eroare Validare: " + mesaj) {}
 };
 
 // exceptie pentru cand nu sunt suficiente produse
