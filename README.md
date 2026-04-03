@@ -5,6 +5,7 @@ Acesta este proiectul meu pentru disciplina Programare Orientată pe Obiecte. M-
 Din punct de vedere tehnic, am organizat codul sub forma unui arbore, unde aproape toate cele 15 clase sunt legate prin moștenire.
 
 ![](arboreMostenire.png)
+![](schemaMeniuCompunere1.png)
 
 ## **1\. Entitate – Rădăcina proiectului**
 
@@ -40,8 +41,6 @@ Din această clasă se ramifică cele trei mari direcții ale aplicației: **Pro
 **13\. Comanda:** Reprezintă bonul fiscal al clientului. Are propriul vector de pointeri către Produs, calculând automat totalul de plată în funcție de ce am pus în coș.
 
 **14\. Meniu:** Este „creierul” interactiv al programului. Folosește pattern-ul Singleton pentru a asigura o singură instanță. Este împărțit pe secțiuni de management (Produse, Personal, Clienți) și permite operații complete de adăugare, vizualizare, modificare și ștergere (CRUD).
-
-![](schemaMeniuCompunere.png)
 
 **15\. Erori:** Am creat o ierarhie de excepții personalizate pentru a valida datele. De exemplu, dacă cineva introduce un preț negativ sau încearcă să facă o comandă fără produse, programul nu „crapă”, ci afișează un mesaj de eroare prietenos.
 
