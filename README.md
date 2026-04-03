@@ -49,7 +49,7 @@ Din această clasă se ramifică cele trei mari direcții ale aplicației: **Pro
 
 În fișierul principal, am simulat introducerea unor date inițiale (manager, angajați, câteva flori în stoc) pentru ca aplicația să nu pornească goală, după care se lansează bucla meniului interactiv.
 
-### **Funcții regasite in program**
+## **Funcții regasite in program**
 
 În cadrul ierarhiei, clasele folosesc atât metode proprii, cât și metode preluate prin moștenire de la părinți.
 
