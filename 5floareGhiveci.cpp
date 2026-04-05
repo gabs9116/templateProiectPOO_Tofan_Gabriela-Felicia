@@ -19,7 +19,7 @@ double FloareGhiveci::calculeazaPretFinal() const {
     double taxaGhiveci = pretBaza * 0.3;
 
     // cost suplimentar daca ghiveciul este din ceramica
-    if (materialGhiveci == "ceramica") {
+    if (materialGhiveci == "ceramica" || materialGhiveci == "Ceramica") {
         taxaGhiveci += 15.0;
     }
 
