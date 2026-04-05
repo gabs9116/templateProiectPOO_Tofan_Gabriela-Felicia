@@ -20,5 +20,5 @@ class Client : public Persoana {
         std::string getRol() const override;
 
         // adauga comanda in vector
-        void adaugaComanda(const Comanda& c);
+        void adaugaComanda(Comanda* c);
 };
