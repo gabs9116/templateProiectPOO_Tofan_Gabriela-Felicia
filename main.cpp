@@ -33,7 +33,7 @@ void introducereDateInitiale(Meniu* aplicatie) {
         aplicatie->adaugaPersoanaExtern(c2);
         
         // Simulam o comanda veche pentru primul client
-        Comanda* com1("01.04.2026");
+        Comanda* com1 = new Comanda("01.04.2026");
         com1->adaugaProdus(new FloareLaFir("Lalea", 10.0, 100, "Galben", 5));
         c1->adaugaComanda(com1);
 
