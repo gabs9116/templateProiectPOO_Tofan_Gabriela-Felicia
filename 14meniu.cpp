@@ -4,6 +4,7 @@
 #include "6articolDecorativ.h"
 #include "15erori.h"
 #include "9florist.h"
+#include "3floare.h"
 #include "11manager.h"
 #include "10vanzator.h"
 #include "12client.h"
@@ -182,8 +183,6 @@ void Meniu::modificaPret() {
                 }
 
                 (*id) -> setPretBaza(pretNou);
-
-                (*id) -> setPretBaza(pretNou);
                 
                 std::cout << "Pretul a fost actualizat cu succes!\n";
             } else
@@ -357,7 +356,7 @@ void Meniu::adaugaComandaClient() {
             std::cout << "ID Produse (0 pentru stop): ";
 
             while (std::cin >> idProdus && idProdus != 0) {
-                auto idP = std::find_if(inventar.begin(), inventar.end(), [idProdus](Produs* produs) {
+                auto idP = std::find_if(inventar.begin(), inventar.end(), [idProdus](const Produs* produs) {
                     return produs -> getId() == idProdus;
                 });
 
