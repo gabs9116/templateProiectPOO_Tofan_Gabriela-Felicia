@@ -116,6 +116,8 @@ void Meniu::adaugaProdus() {
 
             int nrFire;
             std::cout << "Nr. fire: "; std::cin >> nrFire;
+            if (nrFire < 0) 
+                throw ExceptieValidareDate("Numarul de fire nu poate fi negativ!");
 
             inventar.push_back(new FloareLaFir(nume, pret, grad, culoare, nrFire));
         } else 
@@ -338,62 +340,72 @@ void Meniu::stergeClient() {
 
 // adaugarea unei comenzi pentru un client
 void Meniu::adaugaComandaClient() {
-    int idClient; 
-    std::cout << "ID Client: "; std::cin >> idClient;
-
-    auto id = std::find_if(oameni.begin(), oameni.end(), [idClient](const Persoana* p) {
-        return (p->getId() == idClient && dynamic_cast<const Client*>(p) != nullptr);
-    });
-
-    if (id != oameni.end()) {
-        Client* c = dynamic_cast<Client*>(*id);
-        if (c) {
-            std::string data; 
-            std::cout << "Data comanda (dd.mm.yyyy): "; std::cin >> data;
-            Comanda* cNoua = new Comanda(data);
-
-            int idProdus;
-            std::cout << "ID Produse (0 pentru stop): ";
-
-            while (std::cin >> idProdus && idProdus != 0) {
-                auto idP = std::find_if(inventar.begin(), inventar.end(), [idProdus](const Produs* produs) {
-                    return produs -> getId() == idProdus;
-                });
-
-                if (idP != inventar.end()) {
-                    // verific daca e floare la fir
-                    FloareLaFir* floareFir = dynamic_cast<FloareLaFir*>(*idP);
-                    
-                    if (floareFir) {
-                        int cantitate;
-                        std::cout << "Cate fire doriti? (Disponibil: " << floareFir->getNrFire() << "): ";
-                        std::cin >> cantitate;
-
-                        if (cantitate > 0 && cantitate <= floareFir -> getNrFire()) {
-                            // scad din stoc
-                            floareFir -> setNrFire(floareFir -> getNrFire() - cantitate);
-
-                            // creez un obiect nou cu nr resprectiv de flori
-                            FloareLaFir* deVandut = new FloareLaFir(floareFir->getNume(), floareFir->getPretBaza(), floareFir->getGradStare(), floareFir -> getCuloare(), cantitate);
-                            
-                            cNoua -> adaugaProdus(deVandut);
-
-                        } else {    
-                            std::cout << "Cantitate invalida sau stoc insuficient!\n";
+    try {
+        int idClient; 
+        std::cout << "ID Client: "; std::cin >> idClient;
+    
+        auto id = std::find_if(oameni.begin(), oameni.end(), [idClient](const Persoana* p) {
+            return (p->getId() == idClient && dynamic_cast<const Client*>(p) != nullptr);
+        });
+    
+        if (id != oameni.end()) {
+            Client* c = dynamic_cast<Client*>(*id);
+            if (c) {
+                std::string data; 
+                std::cout << "Data comanda (dd.mm.yyyy): "; std::cin >> data;
+                Comanda* cNoua = new Comanda(data);
+    
+                int idProdus;
+                std::cout << "ID Produse (0 pentru stop): ";
+    
+                while (std::cin >> idProdus && idProdus != 0) {
+                    auto idP = std::find_if(inventar.begin(), inventar.end(), [idProdus](const Produs* produs) {
+                        return produs -> getId() == idProdus;
+                    });
+    
+                    if (idP != inventar.end()) {
+                        // verific daca e floare la fir
+                        FloareLaFir* floareFir = dynamic_cast<FloareLaFir*>(*idP);
+                        
+                        if (floareFir) {
+                            int cantitate;
+                            std::cout << "Cate fire doriti? (Disponibil: " << floareFir->getNrFire() << "): ";
+                            std::cin >> cantitate;
+    
+                            if (cantitate > 0 && cantitate <= floareFir -> getNrFire()) {
+                                // scad din stoc
+                                floareFir -> setNrFire(floareFir -> getNrFire() - cantitate);
+    
+                                // creez un obiect nou cu nr resprectiv de flori
+                                FloareLaFir* deVandut = new FloareLaFir(floareFir->getNume(), floareFir->getPretBaza(), floareFir->getGradStare(), floareFir -> getCuloare(), cantitate);
+                                
+                                cNoua -> adaugaProdus(deVandut);
+    
+                            } else {    
+                                std::cout << "Cantitate invalida sau stoc insuficient!\n";
+                            }
+                        } else {
+                            cNoua -> adaugaProdus(*idP); 
                         }
                     } else {
-                        cNoua -> adaugaProdus(*idP); 
+                        std::cout << "Produsul cu ID " << idProdus << " nu a fost gasit.\n";
                     }
-                } else {
-                    std::cout << "Produsul cu ID " << idProdus << " nu a fost gasit.\n";
                 }
+
+                if (cNoua -> calculeazaTotal() == 0) { 
+                    delete cNoua;
+                    throw ExceptieComandaGoala();
+                }
+                
+                c -> adaugaComanda(cNoua);
+                std::cout << "Comanda adaugata!\n"; return;
+            } else {
+            std::cout << "Client negasit.\n";
             }
-            
-            c -> adaugaComanda(cNoua);
-            std::cout << "Comanda adaugata!\n"; return;
-        } else {
-        std::cout << "Client negasit.\n";
         }
+    }
+    catch (const ExceptieFlorarie& e) { // StocInsuficient și ComandaGoala
+        std::cout << e.what() << "\n";
     }
 }
 
