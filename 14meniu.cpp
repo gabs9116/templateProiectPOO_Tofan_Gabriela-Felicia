@@ -359,7 +359,7 @@ void Meniu::adaugaComandaClient() {
             while (std::cin >> idProdus && idProdus != 0) {
                 for (auto prod : inventar) {
                     if (prod -> getId() == idProdus) {
-                        cNoua- > adaugaProdus(prod); 
+                        cNoua -> adaugaProdus(prod); 
                     }
                 }
             }
