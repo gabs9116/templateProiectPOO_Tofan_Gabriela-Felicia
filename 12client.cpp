@@ -6,6 +6,9 @@ Client::Client(const std::string& nume, const std::string& prenume, const std::s
 
 // destructor
 Client::~Client() {
+    for (auto c : comenzi) {
+        delete c;
+    }
     comenzi.clear(); // sterg obiectele nu pointerii
 }   
 
@@ -30,6 +33,8 @@ std::string Client::getRol() const {
 }
 
 // adauga comanda in vector
-void Client::adaugaComanda(const Comanda& c) {
-    comenzi.push_back(c);
+void Client::adaugaComanda(Comanda* c) {
+    if (c != nullptr) {
+        comenzi.push_back(c);
+    }
 }
