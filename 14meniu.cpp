@@ -357,12 +357,39 @@ void Meniu::adaugaComandaClient() {
             std::cout << "ID Produse (0 pentru stop): ";
 
             while (std::cin >> idProdus && idProdus != 0) {
-                for (auto prod : inventar) {
-                    if (prod -> getId() == idProdus) {
-                        cNoua -> adaugaProdus(prod); 
+                auto idP = std::find_if(inventar.begin(), inventar.end(), [idProdus](Produs* produs) {
+                    return produs -> getId() == idProdus;
+                });
+
+                if (idP != inventar.end()) {
+                    // verific daca e floare la fir
+                    FloareLaFir* floareFir = dynamic_cast<FloareLaFir*>(*idP);
+                    
+                    if (floareFir) {
+                        int cantitate;
+                        std::cout << "Cate fire doriti? (Disponibil: " << floareFir->getNrFire() << "): ";
+                        std::cin >> cantitate;
+
+                        if (cantitate > 0 && cantitate <= floareFir -> getNrFire()) {
+                            // scad din stoc
+                            floareFir -> setNrFire(floareFir -> getNrFire() - cantitate);
+
+                            // creez un obiect nou cu nr resprectiv de flori
+                            FloareLaFir* deVandut = new FloareLaFir(floareFir->getNume(), floareFir->getPretBaza(), floareFir->getGradStare(), floareFir -> getCuloare(), cantitate);
+                            
+                            cNoua -> adaugaProdus(deVandut);
+
+                        } else {    
+                            std::cout << "Cantitate invalida sau stoc insuficient!\n";
+                        }
+                    } else {
+                        cNoua -> adaugaProdus(*idP); 
                     }
+                } else {
+                    std::cout << "Produsul cu ID " << idProdus << " nu a fost gasit.\n";
                 }
             }
+            
             c -> adaugaComanda(cNoua);
             std::cout << "Comanda adaugata!\n"; return;
         } else {
