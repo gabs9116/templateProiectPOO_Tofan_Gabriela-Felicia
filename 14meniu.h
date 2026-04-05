@@ -17,6 +17,10 @@ class Meniu {
         // destructor
         ~Meniu();
 
+        // constructorul de copiere si operator= => nu functioneaza pentru clasa meniu
+        Meniu(const Meniu&) = delete;
+        Meniu& operator=(const Meniu&) = delete;
+
         // bucla principala a programului
         void ruleaza();
 
