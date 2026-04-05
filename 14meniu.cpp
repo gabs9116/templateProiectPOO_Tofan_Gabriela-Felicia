@@ -351,17 +351,17 @@ void Meniu::adaugaComandaClient() {
         if (c) {
             std::string data; 
             std::cout << "Data comanda (dd.mm.yyyy): "; std::cin >> data;
-            Comanda noua(data);
+            Comanda* cNoua = new Comanda(data);
 
             int idProdus;
             std::cout << "ID Produse (0 pentru stop): ";
 
             while (std::cin >> idProdus && idProdus != 0) {
                 for (auto prod : inventar) {
-                    if (prod -> getId() == idProdus) noua.adaugaProdus(prod);
+                    if (prod -> getId() == idProdus) cNoua.adaugaProdus(prod);
                 }
             }
-            c->adaugaComanda(noua);
+            c -> adaugaComanda(cNoua);
             std::cout << "Comanda adaugata!\n"; return;
         } else {
         std::cout << "Client negasit.\n";
