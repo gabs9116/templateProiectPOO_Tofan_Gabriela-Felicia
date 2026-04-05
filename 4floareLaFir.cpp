@@ -22,15 +22,18 @@ double FloareLaFir::calculeazaPretFinal() const {
 // redefinirea afisarii
 void FloareLaFir::afisare(std::ostream& out) const {
     Floare::afisare(out);
-    out << "Culoare: " << culoare << " | Cantitate: " << nrFire << " fire" << " | Total: " << calculeazaPretFinal() << " RON\n";
+    out << "Culoare: " << culoare << " | Cantitate: " << nrFire << " fire.\n";
 }
 
 // getter
-// int FloareLaFir::getNrFire() const { 
-//     return nrFire; 
-// }
+int FloareLaFir::getNrFire() const { 
+    return nrFire; 
+}
+std::string FloareLaFir::getCuloare() const {
+    return culoare;
+}
 
 // setter
-// void FloareLaFir::setNrFire(int valoare) { 
-//     nrFire = valoare; 
-// }
+void FloareLaFir::setNrFire(int valoare) { 
+    nrFire = valoare; 
+}
