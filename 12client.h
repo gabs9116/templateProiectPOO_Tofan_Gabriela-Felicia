@@ -5,7 +5,7 @@
 #include <iostream>
 
 class Client : public Persoana {
-        std::vector<Comanda> comenzi;
+        std::vector<Comanda*> comenzi;
     public:
         // constructor cu parametri
         Client(const std::string& nume, const std::string& prenume, const std::string& telefon);
