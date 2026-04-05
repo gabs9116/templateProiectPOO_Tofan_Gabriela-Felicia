@@ -12,6 +12,10 @@ class Entitate {
         // destructor virtual
         virtual ~Entitate(); 
 
+        // constructorul de copiere si operator= => nu functioneaza pentru clasa entitate si restul claselor care o mostenesc
+        Entitate(const Entitate&) = delete;
+        Entitate& operator=(const Entitate&) = delete;
+
         // transform clasa in una abstracta
         virtual void afisare(std::ostream& out) const = 0; 
 
