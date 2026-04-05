@@ -7,7 +7,11 @@ Comanda::Comanda(const std::string& dataComanda) : Entitate(), dataComanda(dataC
 
 // destructor
 Comanda::~Comanda() {
-    produseComandate.clear(); // sterg pointerii nu produsele
+    // in cazul comenzilor cu fire de flori vor fi creeate obiecte noi
+    for (auto p : produseComandate) {
+        delete p;
+    }
+    produseComandate.clear();
 }
 
 // adaugare produs in vector
