@@ -64,4 +64,6 @@ int main() {
     aplicatie->ruleaza();
 
     std::cout << "\nProgramul s-a inchis.\n";
+
+    return 0;
 }
