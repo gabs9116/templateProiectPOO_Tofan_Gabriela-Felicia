@@ -358,14 +358,16 @@ void Meniu::adaugaComandaClient() {
 
             while (std::cin >> idProdus && idProdus != 0) {
                 for (auto prod : inventar) {
-                    if (prod -> getId() == idProdus) cNoua.adaugaProdus(prod);
+                    if (prod -> getId() == idProdus) {
+                        cNoua- > adaugaProdus(prod); 
+                    }
                 }
             }
             c -> adaugaComanda(cNoua);
             std::cout << "Comanda adaugata!\n"; return;
         } else {
         std::cout << "Client negasit.\n";
-    }
+        }
     }
 }
 
