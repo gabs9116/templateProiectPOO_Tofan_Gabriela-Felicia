@@ -9,7 +9,7 @@ Client::~Client() {
     for (auto c : comenzi) {
         delete c;
     }
-    comenzi.clear(); // sterg obiectele nu pointerii
+    comenzi.clear();
 }   
 
 // redefinirea afisarii
