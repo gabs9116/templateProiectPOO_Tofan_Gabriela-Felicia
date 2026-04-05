@@ -21,8 +21,10 @@ void Client::afisare(std::ostream& out) const {
     } else {
         out << "Comenzi:\n";
 
-        for (const Comanda& c : comenzi) {
-            c.afisare(out);
+        for (const Comanda* c : comenzi) {
+            if (c != nullptr) {
+                c->afisare(out);
+            }
         }
     }
 }
